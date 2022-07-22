@@ -43,6 +43,7 @@ Plug 'neovim/nvim-lspconfig'
 
 " Nicer LSP UI
 Plug 'glepnir/lspsaga.nvim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -80,7 +81,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set colorcolumn=80
-set viminfo='25,\"50,n~/AppData/Local/nvim-data/shada/main.shada
 set tw=79
 set autoindent
 set smartindent
@@ -117,6 +117,12 @@ syntax on
 colorscheme nord
 filetype on
 filetype plugin indent on
+
+" this makes the nord theme work in windows terminal
+" otherwise visual select doesn't show up
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " lightline
 set noshowmode
@@ -178,8 +184,8 @@ map <leader>t :TagbarToggle<CR>
 " copy, cut and paste
 vmap <C-c> "+y
 vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
+" vmap <C-v> c<ESC>"+p
+" imap <C-v> <ESC>"+pa
 
 " disable autoindent when pasting text
 " source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
@@ -281,4 +287,3 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-EOF
